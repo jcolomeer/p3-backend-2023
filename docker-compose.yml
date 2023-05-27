@@ -1,0 +1,16 @@
+version: '3'
+services: 
+  film-review-db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=qwer
+      - POSTGRES_DB=film-review-db
+    ports:  
+      - 5432:5432 
+    volumes: 
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata: 
+  
