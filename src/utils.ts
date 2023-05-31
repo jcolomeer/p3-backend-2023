@@ -1,6 +1,18 @@
-import { RequestHandler } from "express";
+import { RequestHandler, ErrorRequestHandler } from "express";
 
-export default function errorChecked(handler: RequestHandler): RequestHandler {
+export const defaultErrorHandler: ErrorRequestHandler = (
+  err,
+  req,
+  res,
+  next
+) => {
+  res.status(500).json({
+    type: err.constructor.name,
+    message: err.toString(),
+  });
+};
+
+export const errorChecked = (handler: RequestHandler): RequestHandler => {
   return async (req, res, next) => {
     try {
       await handler(req, res, next);
@@ -8,4 +20,4 @@ export default function errorChecked(handler: RequestHandler): RequestHandler {
       next(e);
     }
   };
-}
+};

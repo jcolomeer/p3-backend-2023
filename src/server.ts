@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import filmsRouter from "./films.js";
 import usersRouter from "./users.js";
+import { defaultErrorHandler } from "./utils.js";
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,7 @@ app.use(morgan("dev"));
 
 app.use("/films", filmsRouter);
 app.use("/users", usersRouter);
+app.use(defaultErrorHandler);
 
 const { SERVER_PORT } = process.env;
 app.listen(SERVER_PORT, () => {
