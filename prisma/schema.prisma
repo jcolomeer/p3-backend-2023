@@ -26,11 +26,12 @@ model User {
 }
 
 model Review {
-  id          String  @id @default(uuid())
-  rating      Int
+  id          String   @id @default(uuid())
+  rating      Float
   description String?
   filmId      String
-  film        Film    @relation(fields: [filmId], references: [id])
+  film        Film     @relation(fields: [filmId], references: [id])
   userId      String
-  user        User    @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
 }
