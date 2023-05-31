@@ -1,0 +1,7 @@
+import { Router } from "express";
+import prismaClient from "./prisma-client.js";
+import errorChecked from "./utils.js";
+
+const router = Router();
+
+export default router;
