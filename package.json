@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "ts-node-esm src/server.ts"
+    "start": "nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",

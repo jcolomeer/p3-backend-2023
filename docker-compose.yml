@@ -3,6 +3,7 @@ services:
   film-review-db:
     image: postgres
     restart: always
+    container_name: film-review-db
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=qwer

@@ -20,10 +20,10 @@ app.use(morgan("dev"));
 }); */
 
 app.use("/films", filmsRouter);
-app.use("/users", usersRouter);
+//app.use("/users", usersRouter);
 app.use(defaultErrorHandler);
 
 const { SERVER_PORT } = process.env;
 app.listen(SERVER_PORT, () => {
-  console.log("reviews api listening on 5555");
+  console.log(`reviews api listening on ${SERVER_PORT}`);
 });
