@@ -16,5 +16,6 @@ reviews
 
 - get /films/:id/reviews
 - get /users/:id/reviews
-- post /films/:id
-- delete /users/:userId/:reviewId
+- post /films/:id/reviews
+- delete /users/:userId/reviwes/:reviewId
+- update /users/:userId/reviwes/:reviewId

@@ -37,7 +37,7 @@ router.post(
   })
 );
 
-router.put(
+router.patch(
   "/:id",
   errorChecked(async (req, res) => {
     const { id: filmId } = req.params;
@@ -51,5 +51,7 @@ router.put(
     });
   })
 );
+
+router.use("/:filmId/reviews", reviewRouter);
 
 export default router;

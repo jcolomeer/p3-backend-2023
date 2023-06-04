@@ -36,7 +36,7 @@ router.post(
   })
 );
 
-router.put(
+router.patch(
   "/:id",
   errorChecked(async (req, res) => {
     const { id: userId } = req.params;
@@ -60,5 +60,7 @@ router.delete(
     res.status(200).json({ ...deletedUser, deleted: true });
   })
 );
+
+router.use("/:userId/reviews", reviewsRouter);
 
 export default router;
