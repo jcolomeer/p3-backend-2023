@@ -25,24 +25,30 @@ router.get(
   })
 );
 
-router.post("/", async (req, res) => {
-  const newFilm = await prismaClient.film.create({
-    data: { ...req.body },
-  });
-  res
-    .status(200)
-    .send(`New film created: '${newFilm.title} (${newFilm.year})'`);
-});
+router.post(
+  "/",
+  errorChecked(async (req, res) => {
+    const newFilm = await prismaClient.film.create({
+      data: { ...req.body },
+    });
+    res
+      .status(200)
+      .send(`New film created: '${newFilm.title} (${newFilm.year})'`);
+  })
+);
 
-router.put("/:id", async (req, res) => {
-  const { id: filmId } = req.params;
-  const updatedFilm = await prismaClient.film.update({
-    where: { id: filmId },
-    data: { ...req.body },
-  });
-  res
-    .status(200)
-    .send(`Updated film: '${updatedFilm.title} (${updatedFilm.year})'`);
-});
+router.put(
+  "/:id",
+  errorChecked(async (req, res) => {
+    const { id: filmId } = req.params;
+    const updatedFilm = await prismaClient.film.update({
+      where: { id: filmId },
+      data: { ...req.body },
+    });
+    res
+      .status(200)
+      .send(`Updated film: '${updatedFilm.title} (${updatedFilm.year})'`);
+  })
+);
 
 export default router;
