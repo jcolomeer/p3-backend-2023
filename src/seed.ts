@@ -8,7 +8,7 @@ const films = [
   { title: "Knives Out", year: 2019 },
   { title: "Decision to Leave", year: 2022 },
   { title: "Marriage Story", year: 2019 },
-  { title: "Princess Mononoke", year: 1997 },
+  { title: "Princess Mononoke", year: 1996 },
 ];
 
 for (let element of films) {
