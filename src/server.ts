@@ -20,7 +20,7 @@ app.use(morgan("dev"));
 }); */
 
 app.use("/films", filmsRouter);
-//app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 app.use(defaultErrorHandler);
 
 const { SERVER_PORT } = process.env;

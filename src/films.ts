@@ -2,7 +2,6 @@ import { Router } from "express";
 import prismaClient from "./prisma-client.js";
 import { errorChecked } from "./utils.js";
 import reviewRouter from "./reviews.js";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/index.js";
 
 const router = Router();
 
@@ -31,9 +30,10 @@ router.post(
     const newFilm = await prismaClient.film.create({
       data: { ...req.body },
     });
-    res
-      .status(200)
-      .send(`New film created: '${newFilm.title} (${newFilm.year})'`);
+    res.status(200).json({
+      ...newFilm,
+      created: true,
+    });
   })
 );
 
@@ -45,9 +45,10 @@ router.put(
       where: { id: filmId },
       data: { ...req.body },
     });
-    res
-      .status(200)
-      .send(`Updated film: '${updatedFilm.title} (${updatedFilm.year})'`);
+    res.status(200).json({
+      ...updatedFilm,
+      updated: true,
+    });
   })
 );
 

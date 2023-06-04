@@ -34,7 +34,15 @@ const newReviews = await prisma.review.createMany({
       description: "Amazing",
       userId: newUser.id,
     },
-    { filmId: newFilms[2].id, rating: 4, userId: newUser.id },
-    { filmId: newFilms[3].id, rating: 5, userId: newUser.id },
+    {
+      filmId: newFilms[2].id,
+      rating: 4,
+      userId: newUser.id,
+    },
+    {
+      filmId: newFilms[3].id,
+      rating: 5,
+      userId: newUser.id,
+    },
   ],
 });
