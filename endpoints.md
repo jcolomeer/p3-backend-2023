@@ -10,7 +10,7 @@ users
 - get /users/:id
 - post /users/
 - put /users/:id
-- delete /users/:id
+- delete /users/:id (por el momento solo se eliminan usuarios sin ninguna review)
 
 reviews
 

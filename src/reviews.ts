@@ -41,10 +41,11 @@ router.post(
   errorChecked(async (req, res) => {
     const { filmId } = req.params;
     const { userId } = req.query;
+
     const newReview = await prismaClient.review.create({
       data: { ...req.body, userId, filmId },
     });
-    res.status(200).json({ newReview, created: true });
+    res.status(200).json({ ...newReview, created: true });
   })
 );
 
@@ -52,7 +53,7 @@ router.delete(
   "/:id",
   errorChecked(async (req, res) => {
     const { id } = req.params;
-    const deletedReview = await prismaClient.review.delete({
+    const deletedReview = prismaClient.review.delete({
       where: { id },
     });
     res.status(200).json({ ...deletedReview, deleted: true });
